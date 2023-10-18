@@ -1,0 +1,66 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+
+  border-radius: 20px;
+  height: auto;
+}
+.is-hidden {
+  visibility: hidden;
+}
+.breed-select {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.cat-info {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  padding: 50px 50px;
+  margin: 20px auto 0 auto;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 900;
+}
+.text {
+  display: flex;
+  justify-content: start;
+  margin-top: 10px;
+  font-size: 20px;
+}
+.span-text {
+  margin-top: 30px;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: rgb(5, 226, 97);
+}
+.error {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  color: rgb(255, 0, 0);
+}

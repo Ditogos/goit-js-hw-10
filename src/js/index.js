@@ -12,12 +12,15 @@ const catInformation = document.querySelector('.cat-info');
 load.classList.add('is-hidden');
 error.classList.add('is-hidden');
 
-function getCatsBreedList(breed) {
+function getPetsList(breed) {
   selector.innerHTML = breed
     .map(breed => `<option value="${breed.id}">${breed.name}</option>`)
     .join('\n');
 }
 fetchBreeds()
+  .then(result => {
+    getPetsList(result);
+  })
   .then(() => new SlimSelect({ select: `.breed-select` }))
   .catch(() => {
     Notiflix.Notify.failure(

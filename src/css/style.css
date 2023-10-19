@@ -1,5 +1,5 @@
 body {
-  background-image: url('/src/img/pngtree-animal-background-cute-cat-cat-smile-cat-image_585543.jpg');
+  background-image: url('/src/img/7411725.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -51,13 +51,13 @@ img {
 
 .back-color {
   width: 100%;
-  background-color: rgb(248, 248, 248);
+  background-color: white;
   border-radius: 10px;
   animation: fadeIn 1s ease;
 }
 .title {
   display: flex;
-  color: rgb(86, 5, 235);
+  color: rgb(241, 121, 7);
   justify-content: center;
   font-size: 30px;
   font-weight: 900;

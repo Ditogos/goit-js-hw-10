@@ -48,7 +48,7 @@ function onSelect(evt) {
       );
     })
     .finally(() => {
-      catInformation.classList.add('is-hidden');
+      catInformation.classList.toggle('is-hidden');
       load.classList.add('is-hidden');
     });
 }

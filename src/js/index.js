@@ -29,17 +29,19 @@ function fetchBreedsAndSetPetsList() {
       );
     })
     .finally(() => {
-      catInformation.classList.add('is-hidden');
       load.classList.add('is-hidden');
     });
 }
 selector.addEventListener('change', onSelect);
+
 function onSelect(evt) {
   const selectBreedId = evt.currentTarget.value;
+  catInformation.classList.add('is-hidden');
 
   fetchCatByBreed(selectBreedId)
     .then(data => {
       markup(data);
+      catInformation.classList.remove('is-hidden');
     })
     .catch(() => {
       Notiflix.Notify.failure(
@@ -48,7 +50,6 @@ function onSelect(evt) {
       );
     })
     .finally(() => {
-      catInformation.classList.toggle('is-hidden');
       load.classList.add('is-hidden');
     });
 }

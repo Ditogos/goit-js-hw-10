@@ -9,7 +9,6 @@ const load = document.querySelector('.loader');
 const error = document.querySelector('.error');
 const catInformation = document.querySelector('.cat-info');
 
-load.classList.add('is-hidden');
 error.classList.add('is-hidden');
 
 function getPetsList(breed) {
@@ -17,37 +16,40 @@ function getPetsList(breed) {
     .map(breed => `<option value="${breed.id}">${breed.name}</option>`)
     .join('\n');
 }
-fetchBreeds()
-  .then(result => {
-    getPetsList(result);
-  })
-  .then(() => new SlimSelect({ select: `.breed-select` }))
-  .catch(() => {
-    Notiflix.Notify.failure(
-      'Oops! Something went wrong! Try reloading the page!',
-      { timeout: 4000, userIcon: false }
-    );
-  });
-
+function fetchBreedsAndSetPetsList() {
+  fetchBreeds()
+    .then(result => {
+      getPetsList(result);
+    })
+    .then(() => new SlimSelect({ select: `.breed-select` }))
+    .catch(() => {
+      Notiflix.Notify.failure(
+        'Oops! Something went wrong! Try reloading the page!',
+        { timeout: 4000, userIcon: false }
+      );
+    })
+    .finally(() => {
+      catInformation.classList.add('is-hidden');
+      load.classList.add('is-hidden');
+    });
+}
 selector.addEventListener('change', onSelect);
 function onSelect(evt) {
-  catInformation.classList.add('is-hidden');
-  load.classList.add('is-hidden');
   const selectBreedId = evt.currentTarget.value;
 
   fetchCatByBreed(selectBreedId)
     .then(data => {
       markup(data);
-      catInformation.classList.toggle('is-hidden');
-      load.classList.add('is-hidden');
     })
     .catch(() => {
-      catInformation.classList.toggle('is-hidden');
-      load.classList.add('is-hidden');
       Notiflix.Notify.failure(
         `Oops! Something went wrong! Try reloading the page!`,
         { timeout: 4000, userIcon: false }
       );
+    })
+    .finally(() => {
+      catInformation.classList.add('is-hidden');
+      load.classList.add('is-hidden');
     });
 }
 function markup(data) {
@@ -61,3 +63,5 @@ function markup(data) {
 </div>`;
   catInformation.innerHTML = catList;
 }
+
+fetchBreedsAndSetPetsList();
